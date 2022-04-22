@@ -41,4 +41,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Search fxn
+     */
+    public static function search($search)
+    {
+        return empty($search) ? static::query()
+            : static::where('id', 'like', '%' . $search . '%')
+                ->orWhere('name', 'like', '%'.$search.'%')
+                ->orWhere('email', 'like', '%'.$search.'%');
+    }
 }

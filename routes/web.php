@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\UsersController;
+use App\Http\Livewire\UsersTable;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', UsersTable::class);
+Route::get('/', [UsersController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
